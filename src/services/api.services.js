@@ -8,6 +8,7 @@ export const getAllEvents = () => {
       events {
         name
         event_type
+        permission
         start_time
         end_time
         description

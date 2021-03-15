@@ -1,10 +1,16 @@
 
 <template>
   <div class="home">
+
     <div id="main-banner">
       <h1>Pinohacks</h1>
     </div>
     <button @click.prevent="onRequest">pe</button>
+
+    <h1>FAQ</h1>
+
+    <h1>Sponsers</h1>
+
   </div>
 </template>
 
