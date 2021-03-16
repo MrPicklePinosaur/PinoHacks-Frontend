@@ -53,6 +53,8 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 
   .faq-column {

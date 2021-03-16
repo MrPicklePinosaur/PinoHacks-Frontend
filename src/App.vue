@@ -2,8 +2,9 @@
 <template>
   <v-app>
     <navbar/>
-    <router-view/>
+    <router-view></router-view>
     <footer>
+      <hr>
       &lt;/&gt; {{ $t('madewith', { icon: "☕" }) }}
       <!-- <font-awesome-icon :icon="['fas','mug-hot']" /> -->
     </footer>
@@ -42,7 +43,7 @@ export default {
     height: 100%;
   }
   footer {
-    height: 4rem;
+    height: 6rem;
     bottom: 0;
     width: 100%;
     text-align: center;

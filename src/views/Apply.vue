@@ -1,7 +1,7 @@
 
 <template>
-  <div>
-    <h1>Apply</h1>
+  <div class="apply-body">
+    <p>Link to Typeform or custom application here.</p>
   </div>
 </template>
 
@@ -12,5 +12,8 @@ export default {
 </script>
 
 <style>
-
+  .apply-body {
+    text-align: center;
+    height: 100%;
+  }
 </style>

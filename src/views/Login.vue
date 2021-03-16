@@ -1,13 +1,11 @@
 <template>
-  <div>
-
-    <h1>Login</h1>
-    <div class="login-container container">
+  <div class="login-body container">
+    <div class="login-container">
       <div class="row justify-content-md-center">
         <input
           class="login-input"
           type="text"
-          placeholder="username"
+          :placeholder="$t('username')"
           v-model="loginForm.username"
           required
         >
@@ -16,13 +14,13 @@
         <input
           class="login-input"
           type="password"
-          placeholder="password"
+          :placeholder="$t('password')"
           v-model="loginForm.password"
           required
         >
       </div>
       <div class="row justify-content-md-center">
-        <button class="login-button" @click="onSubmit">Sign In!</button>
+        <button class="login-button" type="submit" @click="onSubmit">{{ $t('signin') }}</button>
       </div>
     </div>
 
@@ -62,13 +60,36 @@ export default {
 }
 </script>
 
+<i18n>
+{
+  "en": {
+    "username": "username",
+    "password": "password",
+    "signin": "Sign In!"
+  },
+  "ja": {
+    "username": "ハンダル",
+    "password": "パスワード",
+    "signin": "ログイング！"
+  }
+}
+</i18n>
+
 <style>
+
+  .login-body {
+    height: 100%;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center; */
+  }
 
   .login-container {
     /* text-align: center; */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 10rem;
   }
 
   .login-input {
@@ -101,14 +122,17 @@ export default {
     outline: 0;
     border: 0;
     border-radius: 4px;
-    /* background-color: white;
-    color: var(--bg-primary); */
+    background-color: #D0D0D0;
+    /* color: var(--bg-primary); */
     /*box-shadow: 0 2px 5px black;*/
     height: 3rem;
     width: 18rem;
+
+    transition: all .2s;
   }
 
   .login-button:hover {
+    background-color: #E0E0E0;
   }
 
 </style>

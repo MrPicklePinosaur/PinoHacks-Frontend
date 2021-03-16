@@ -1,7 +1,6 @@
 
 <template>
   <div class="home">
-
     <div id="main-banner">
       <img
         id="main-logo"
@@ -21,7 +20,7 @@
         v-if="!(isLoggedIn)"
         to="/apply"
       >
-        <button id="apply-button">{{ $t('banner.apply-button') }}</button>
+        <b-button id="apply-button" pill variant="primary">{{ $t('banner.apply-button') }}</b-button>
       </router-link>
     </div>
 
@@ -33,6 +32,11 @@
     <faq></faq>
 
     <h2 class="main-header">💖 {{ $t('headers.sponsors') }}</h2>
+    <div id="sponsor-container">
+      <img :src="`${publicPath}sponsors/karatsuba_sponsor.png`" width="150">
+      <img :src="`${publicPath}sponsors/9it-cli_sponsor.png`" width="400">
+      <img :src="`${publicPath}sponsors/halfpixel_sponsor.png`" width="100" style="image-rendering: pixelated">
+    </div>
 
   </div>
 </template>
@@ -115,6 +119,14 @@ export default {
   .main-header {
     margin-left: 10rem;
     margin-top: 2rem;
+  }
+
+  #sponsor-container {
+    text-align: center;
+  }
+
+  #sponsor-container img {
+    margin: 1rem;
   }
 
 </style>
