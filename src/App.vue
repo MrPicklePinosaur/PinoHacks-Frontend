@@ -1,13 +1,13 @@
 
 <template>
-  <div id="app">
+  <v-app>
     <navbar/>
     <router-view/>
     <!-- <footer>
       made with &lt;/&gt;
       <font-awesome-icon :icon="['fab','github']" />
     </footer> -->
-  </div>
+  </v-app>
 </template>
 
 <script>

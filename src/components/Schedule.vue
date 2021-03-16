@@ -33,17 +33,25 @@
         @click:event="showEvent"
         @change="populateEvents"
       ></v-calendar>
-      <!-- <v-menu>
-        <template
-          v-slot:activator="{ on, attrs }"
+
+      <v-menu
+        v-model="selectedOpen"
+        :close-on-content-click="false"
+        :activator="selectedElement"
+        offset-x
+        max-width="30rem"
+      >
+        <v-card
+          flat
         >
-          <v-btn
-            v-bind="attrs"
-            v-on="on"
-          >
-          </v-btn>
-        </template>
-      </v-menu> -->
+          <v-toolbar>
+            <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
+          </v-toolbar>
+          <v-card-text>
+            <span v-html="selectedEvent.description"></span>
+          </v-card-text>
+        </v-card>
+      </v-menu>
     </v-sheet></v-col></v-row>
   </div>
 </template>
@@ -57,7 +65,10 @@ export default {
   data () {
     return {
       focus: '2021-01-12',
-      events: []
+      events: [],
+      selectedEvent: {},
+      selectedElement: null,
+      selectedOpen: false
     }
   },
 
@@ -72,6 +83,22 @@ export default {
     },
 
     showEvent ({ nativeEvent, event }) {
+      const open = () => {
+        this.selectedEvent = event.data
+        this.selectedElement = nativeEvent.target
+        setTimeout(() => {
+          this.selectedOpen = true
+        }, 10)
+      }
+
+      if (this.selectedOpen) {
+        this.selectedOpen = false
+        setTimeout(open, 10)
+      } else {
+        open()
+      }
+
+      nativeEvent.stopPropagation()
     },
 
     populateEvents (data) {
@@ -84,7 +111,8 @@ export default {
                 name: event.name,
                 start: new Date(event.start_time),
                 end: new Date(event.end_time),
-                timed: 1
+                timed: 1,
+                data: event
               }
             })
           this.events = newEvents
