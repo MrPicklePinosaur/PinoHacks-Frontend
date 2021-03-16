@@ -12,7 +12,7 @@ import Vuetify from 'vuetify/lib/framework'
 import 'vuetify/dist/vuetify'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTools, faRunning, faLaptopCode, faRssSquare, faScroll } from '@fortawesome/free-solid-svg-icons'
+import { faTools, faRunning, faLaptopCode, faRssSquare, faScroll, faMugHot } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -24,7 +24,7 @@ Vue.use(Vuetify)
 const vuetify = new Vuetify({})
 
 library.add(
-  faTools, faRunning, faLaptopCode, faRssSquare, faScroll,
+  faTools, faRunning, faLaptopCode, faRssSquare, faScroll, faMugHot,
   faGithub
 )
 Vue.component('font-awesome-icon', FontAwesomeIcon)

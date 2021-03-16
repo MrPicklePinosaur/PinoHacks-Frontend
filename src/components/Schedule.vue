@@ -45,7 +45,7 @@
           flat
         >
           <v-card-text>
-            <div>Starts {{ friendlyEvent(new Date(selectedEvent.start_time)) }}</div>
+            <div>Starts {{ friendlyDate(new Date(selectedEvent.start_time)) }}</div>
             <p class="display-1 text--primary">{{ selectedEvent.name }}</p>
             <span v-html="selectedEvent.description"></span>
           </v-card-text>
@@ -108,6 +108,13 @@ export default {
     },
 
     populateEvents () {
+      const eventColors = {
+        workshop: 'blue',
+        activity: 'green',
+        tech_talk: 'purple',
+        other: 'grey'
+      }
+
       getAllEvents()
         .then(data => {
           console.log(data)
@@ -119,7 +126,8 @@ export default {
                 start: new Date(event.start_time),
                 end: new Date(event.end_time),
                 timed: 1,
-                data: event
+                data: event,
+                color: (event.event_type in eventColors) ? eventColors[event.event_type] : eventColors.other
               }
             })
           this.events = newEvents
@@ -130,15 +138,7 @@ export default {
       const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jly', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-      return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}`
-    },
-
-    friendlyTime (date) {
-      return `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`
-    },
-
-    friendlyEvent (date) {
-      return `${this.friendlyDate(date)} ${this.friendlyTime(date)}`
+      return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`
     },
 
     redirectExternal (event) {

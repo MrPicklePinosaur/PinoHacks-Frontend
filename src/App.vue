@@ -4,8 +4,8 @@
     <navbar/>
     <router-view/>
     <footer>
-      made with &lt;/&gt;
-      <font-awesome-icon :icon="['fab','github']" />
+      &lt;/&gt; {{ $t('madewith', { icon: "☕" }) }}
+      <!-- <font-awesome-icon :icon="['fas','mug-hot']" /> -->
     </footer>
   </v-app>
 </template>
@@ -19,6 +19,17 @@ export default {
   }
 }
 </script>
+
+<i18n>
+{
+  "en": {
+    "madewith": "made with {icon}"
+  },
+  "ja": {
+    "madewith": "{icon}で作ります"
+  }
+}
+</i18n>
 
 <style>
   html {

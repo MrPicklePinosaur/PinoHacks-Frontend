@@ -7,6 +7,13 @@
         id="main-logo"
         :src="`${publicPath}pinohacks_logo.png`"
         alt="PinoHacks"
+        v-if="getLocale==='en'"
+      >
+      <img
+        id="main-logo"
+        :src="`${publicPath}pinohacks_logo_jp.png`"
+        alt="PinoHacks"
+        v-else
       >
       <p id="main-tagline">{{ $t('banner.tagline') }}</p>
 
@@ -18,14 +25,14 @@
       </router-link>
     </div>
 
-    <h2>{{ $t('headers.events') }}</h2>
+    <h2 class="main-header">📅 {{ $t('headers.events') }}</h2>
     <div id="schedule-container">
       <schedule></schedule>
     </div>
-    <h2>{{ $t('headers.faq') }}</h2>
+    <h2 class="main-header">💬 {{ $t('headers.faq') }}</h2>
     <faq></faq>
 
-    <h2>{{ $t('headers.sponsers') }}</h2>
+    <h2 class="main-header">💖 {{ $t('headers.sponsors') }}</h2>
 
   </div>
 </template>
@@ -60,7 +67,7 @@ export default {
     "headers": {
       "events": "Events",
       "faq": "FAQ",
-      "sponsers": "Sponsers"
+      "sponsors": "Sponsors"
     }
   },
   "ja": {
@@ -69,9 +76,9 @@ export default {
       "apply-button": "登録する！"
     },
     "headers": {
-      "events": "Events",
+      "events": "イヴェント",
       "faq": "エフイーキュー",
-      "sponsers": "主催達"
+      "sponsors": "主催達"
     }
   }
 }
@@ -105,8 +112,9 @@ export default {
     margin-bottom: 6rem;
   }
 
-  h2 {
+  .main-header {
     margin-left: 10rem;
+    margin-top: 2rem;
   }
 
 </style>
