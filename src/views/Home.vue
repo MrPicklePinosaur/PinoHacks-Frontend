@@ -1,4 +1,15 @@
 
+<i18n>
+{
+  "en": {
+    "tagline": "the first hackathon that doesn't actually exist"
+  },
+  "ja": {
+    "tagline": "totally japanese"
+  }
+}
+</i18n>
+
 <template>
   <div class="home">
 
@@ -8,7 +19,7 @@
         :src="`${publicPath}pinohacks_logo.png`"
         alt="PinoHacks"
       >
-      <p id="main-tagline">the first hackathon that doesn't actually exist</p>
+      <p id="main-tagline">{{ $t('tagline') }}</p>
 
       <router-link
         v-if="!(isLoggedIn)"
@@ -17,7 +28,6 @@
         <button id="apply-button">Apply Now!</button>
       </router-link>
     </div>
-    <button @click.prevent="onRequest">pe</button>
 
     <h2>Event Schedule</h2>
     <div id="schedule-container">
@@ -31,7 +41,6 @@
 </template>
 
 <script>
-import { getAllEvents } from '../services/api.services'
 import Schedule from '../components/Schedule'
 
 export default {
@@ -45,14 +54,9 @@ export default {
     }
   },
   methods: {
-    onRequest () {
-      getAllEvents()
-        .then(
-          data => {
-            console.log(data)
-          }
-        )
-    }
+  },
+  mounted () {
+    console.log(this.$i18n.messages)
   }
 }
 </script>
