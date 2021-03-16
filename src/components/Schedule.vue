@@ -30,34 +30,31 @@
         v-model="focus"
         :hideHeader="true"
         :events="events"
-      >
-
-      </v-calendar>
+        @click:event="showEvent"
+        @change="populateEvents"
+      ></v-calendar>
+      <v-menu>
+      </v-menu>
     </v-sheet></v-col></v-row>
   </div>
 </template>
 
 <script>
+import { getAllEvents } from '../services/api.services'
+
 export default {
   name: 'Schedule',
 
   data () {
     return {
-      focus: '',
-      events: [
-        {
-          name: 'peeing',
-          start: new Date(1615865271),
-          end: new Date(1615865471)
-        }
-      ]
+      focus: '2021-12-01',
+      events: [],
+      selectedOpen: false,
+      selectedElement: null
     }
   },
 
   methods: {
-    populateEvents () {
-
-    },
 
     prevDay () {
       this.$refs.calendar.prev()
@@ -65,9 +62,32 @@ export default {
 
     nextDay () {
       this.$refs.calendar.next()
+    },
+
+    showEvent ({ nativeEvent, event }) {
+    },
+
+    populateEvents (data) {
+      getAllEvents()
+        .then(data => {
+          const newEvents = data.data.events.map(event => {
+            return {
+              name: event.name,
+              start: new Date(event.start_time),
+              end: new Date(event.end_time),
+              timed: 1
+            }
+          })
+          this.events = newEvents
+        })
     }
 
+  },
+
+  mounted () {
+    this.$refs.calendar.checkChange()
   }
+
 }
 </script>
 
