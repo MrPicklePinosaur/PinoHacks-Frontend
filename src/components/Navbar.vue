@@ -1,6 +1,5 @@
 
 <template>
-
   <div>
     <nav id="navbar-main">
       <ul id="navbar-list">

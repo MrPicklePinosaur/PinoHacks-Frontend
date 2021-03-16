@@ -3,10 +3,10 @@
   <div id="app">
     <navbar/>
     <router-view/>
-    <footer>
+    <!-- <footer>
       made with &lt;/&gt;
       <font-awesome-icon :icon="['fab','github']" />
-    </footer>
+    </footer> -->
   </div>
 </template>
 
