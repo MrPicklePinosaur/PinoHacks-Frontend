@@ -33,11 +33,13 @@ Vue.mixin({
   computed: {
     isLoggedIn () {
       return this.$store.state.auth.loggedIn
+    },
+    getLocale () {
+      return this.$i18n.locale
     }
   }
 })
 
-console.log(i18n)
 new Vue({
   router,
   store,

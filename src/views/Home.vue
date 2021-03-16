@@ -1,15 +1,4 @@
 
-<i18n>
-{
-  "en": {
-    "tagline": "the first hackathon that doesn't actually exist"
-  },
-  "ja": {
-    "tagline": "totally japanese"
-  }
-}
-</i18n>
-
 <template>
   <div class="home">
 
@@ -25,7 +14,7 @@
         v-if="!(isLoggedIn)"
         to="/apply"
       >
-        <button id="apply-button">Apply Now!</button>
+        <button id="apply-button">{{ $t('apply-button') }}</button>
       </router-link>
     </div>
 
@@ -54,12 +43,22 @@ export default {
     }
   },
   methods: {
-  },
-  mounted () {
-    console.log(this.$i18n.messages)
   }
 }
 </script>
+
+<i18n>
+{
+  "en": {
+    "tagline": "the first hackathon that doesn't actually exist",
+    "apply-button": "Apply Now!"
+  },
+  "ja": {
+    "tagline": "最初いらないのハッカソン",
+    "apply-button": "登録する！"
+  }
+}
+</i18n>
 
 <style scoped>
 

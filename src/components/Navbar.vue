@@ -7,6 +7,12 @@
         <router-link to="/login" v-if="!(isLoggedIn)">Login</router-link>
         <router-link to="/logout" @click.native="logout" v-else>Logout</router-link>
         <router-link to="/apply">Apply</router-link>
+        <button
+          @click="toggleLocale"
+        >
+          <p v-if="getLocale==='en'">日本語</p>
+          <p v-else>English</p>
+        </button>
       </ul>
     </nav>
   </div>
@@ -20,6 +26,9 @@ export default {
   methods: {
     logout () {
       this.$store.dispatch('auth/logout')
+    },
+    toggleLocale () {
+      this.$i18n.locale = (this.getLocale === 'en') ? 'ja' : 'en'
     }
   }
 }
