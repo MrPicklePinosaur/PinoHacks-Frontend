@@ -44,12 +44,18 @@
         <v-card
           flat
         >
-          <v-toolbar>
-            <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
-          </v-toolbar>
           <v-card-text>
+            <div>Starts {{ friendlyDate(new Date(selectedEvent.start_time)) }}</div>
+            <p class="display-1 text--primary">{{ selectedEvent.name }}</p>
             <span v-html="selectedEvent.description"></span>
           </v-card-text>
+          <v-btn
+            text
+            @click="redirectExternal(selectedEvent)"
+          >
+            <p v-if="isLoggedIn">Go to Event</p>
+            <p v-else>Event Info</p>
+          </v-btn>
         </v-card>
       </v-menu>
     </v-sheet></v-col></v-row>
@@ -104,6 +110,7 @@ export default {
     populateEvents (data) {
       getAllEvents()
         .then(data => {
+          console.log(data)
           const newEvents = data.data.events
             .filter(event => event.permission === 'public')
             .map(event => {
@@ -117,6 +124,18 @@ export default {
             })
           this.events = newEvents
         })
+    },
+
+    friendlyDate (date) {
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jly', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
+      return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`
+    },
+
+    redirectExternal (event) {
+      const redirectUrl = (this.isLoggedIn) ? event.private_url : event.public_url
+      window.location = redirectUrl
     }
 
   },
