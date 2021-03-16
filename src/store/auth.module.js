@@ -1,3 +1,4 @@
+import { login, logout } from '@/services/auth.service'
 
 const localData = JSON.parse(localStorage.getItem('localData'))
 const initialState = (localData != null)
@@ -10,9 +11,43 @@ export const auth = {
 
   state: initialState,
 
-  mutations: { },
+  mutations: {
+    loginSuccess (state, payload) {
+      state.accessToken = payload.accessToken
+      state.loggedIn = true
+    },
 
-  actions: { },
+    loginFailed (state) {
+      state.accessToken = null
+      state.loggedIn = false
+    },
+
+    logout (state) {
+      state.accessToken = null
+      state.loggedIn = false
+    }
+  },
+
+  actions: {
+    login ({ commit }, creds) {
+      return login(creds.username, creds.password)
+        .then(
+          data => {
+            commit('loginSuccess', data)
+            return Promise.resolve(data)
+          },
+          err => {
+            commit('loginFailed')
+            return Promise.reject(err)
+          }
+        )
+    },
+
+    logout ({ commit }) {
+      commit('logout')
+      logout()
+    }
+  },
 
   modules: { }
 

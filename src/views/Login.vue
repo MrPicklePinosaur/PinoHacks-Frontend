@@ -46,7 +46,17 @@ export default {
     onSubmit (evt) {
       evt.preventDefault()
 
-      console.log(`username: ${this.loginForm.username}, password: ${this.loginForm.password}`)
+      this.$store.dispatch('auth/login', { username: this.loginForm.username, password: this.loginForm.password })
+        .then(
+          data => {
+            console.log(data)
+            this.$router.push('/')
+          },
+          err => {
+            console.log(err)
+            this.loginForm.password = ''
+          }
+        )
     }
   }
 }

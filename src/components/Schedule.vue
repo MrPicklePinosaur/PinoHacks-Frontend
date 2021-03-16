@@ -33,8 +33,17 @@
         @click:event="showEvent"
         @change="populateEvents"
       ></v-calendar>
-      <v-menu>
-      </v-menu>
+      <!-- <v-menu>
+        <template
+          v-slot:activator="{ on, attrs }"
+        >
+          <v-btn
+            v-bind="attrs"
+            v-on="on"
+          >
+          </v-btn>
+        </template>
+      </v-menu> -->
     </v-sheet></v-col></v-row>
   </div>
 </template>
@@ -47,10 +56,8 @@ export default {
 
   data () {
     return {
-      focus: '2021-12-01',
-      events: [],
-      selectedOpen: false,
-      selectedElement: null
+      focus: '2021-01-12',
+      events: []
     }
   },
 
@@ -70,14 +77,17 @@ export default {
     populateEvents (data) {
       getAllEvents()
         .then(data => {
-          const newEvents = data.data.events.map(event => {
-            return {
-              name: event.name,
-              start: new Date(event.start_time),
-              end: new Date(event.end_time),
-              timed: 1
-            }
-          })
+          console.log(data)
+          const newEvents = data.data.events
+            .filter(event => event.permission === 'public')
+            .map(event => {
+              return {
+                name: event.name,
+                start: new Date(event.start_time),
+                end: new Date(event.end_time),
+                timed: 1
+              }
+            })
           this.events = newEvents
         })
     }
