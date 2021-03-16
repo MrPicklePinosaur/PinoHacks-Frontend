@@ -8,19 +8,21 @@
           class="login-input"
           type="text"
           placeholder="username"
+          v-model="loginForm.username"
           required
         >
       </div>
       <div class="row justify-content-md-center">
         <input
           class="login-input"
-          type="text"
+          type="password"
           placeholder="password"
+          v-model="loginForm.password"
           required
         >
       </div>
       <div class="row justify-content-md-center">
-        <button class="login-button">Sign In!</button>
+        <button class="login-button" @click="onSubmit">Sign In!</button>
       </div>
     </div>
 
@@ -29,7 +31,24 @@
 
 <script>
 export default {
-  name: 'Login'
+  name: 'Login',
+
+  data () {
+    return {
+      loginForm: {
+        username: '',
+        password: ''
+      }
+    }
+  },
+
+  methods: {
+    onSubmit (evt) {
+      evt.preventDefault()
+
+      console.log(`username: ${this.loginForm.username}, password: ${this.loginForm.password}`)
+    }
+  }
 }
 </script>
 

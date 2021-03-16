@@ -3,13 +3,24 @@
   <div class="home">
 
     <div id="main-banner">
-      <h1>Pinohacks</h1>
+      <img
+        id="main-logo"
+        :src="`${publicPath}pinohacks_logo.png`"
+        alt="PinoHacks"
+      >
+      <p id="main-tagline">the first hackathon that doesn't actually exist</p>
+
+      <router-link to="/apply">
+        <button id="apply-button">Apply Now!</button>
+      </router-link>
     </div>
     <button @click.prevent="onRequest">pe</button>
 
-    <h1>FAQ</h1>
+    <h2>Event Schedule</h2>
 
-    <h1>Sponsers</h1>
+    <h2>FAQ</h2>
+
+    <h2>Sponsers</h2>
 
   </div>
 </template>
@@ -20,6 +31,11 @@ import { getAllEvents } from '../services/api.services'
 export default {
   name: 'Home',
   components: {
+  },
+  data () {
+    return {
+      publicPath: process.env.BASE_URL
+    }
   },
   methods: {
     onRequest () {
@@ -38,9 +54,21 @@ export default {
 
   #main-banner {
     background-color: var(--bg-light);
-
     padding-top: 4rem;
     padding-bottom: 4rem;
+
+    text-align: center;
+  }
+
+  #main-logo {
+    image-rendering: pixelated;
+    height: 5rem;
+    width: auto;
+  }
+
+  #main-tagline {
+    font-size: 1.2rem;
+    font-weight: 400;
   }
 
 </style>
