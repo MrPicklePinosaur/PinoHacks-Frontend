@@ -1,0 +1,85 @@
+<template>
+  <div>
+
+    <h1>Login</h1>
+    <div class="login-container container">
+      <div class="row justify-content-md-center">
+        <input
+          class="login-input"
+          type="text"
+          placeholder="username"
+          required
+        >
+      </div>
+      <div class="row justify-content-md-center">
+        <input
+          class="login-input"
+          type="text"
+          placeholder="password"
+          required
+        >
+      </div>
+      <div class="row justify-content-md-center">
+        <button class="login-button">Sign In!</button>
+      </div>
+    </div>
+
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Login'
+}
+</script>
+
+<style>
+
+  .login-container {
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .login-input {
+    margin: 0.5rem;
+    appearance: none;
+    outline: 0;
+    /* border: 1px solid rgba(255,255,255,0.4);
+    background-color: rgba(255,255,255,0.2); */
+    border-radius: 4px;
+
+    text-align: center;
+    /* color: white; */
+    /* caret-color: var(--bg-primary); */
+    height: 2.5rem;
+    width: 18rem;
+
+    transition: all .2s;
+  }
+
+  .login-input:focus {
+    outline: none;
+    /* background-color: white; */
+    /* color: var(--bg-primary); */
+    width: 20rem;
+  }
+
+  .login-button {
+    margin-top: 1rem;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    border-radius: 4px;
+    /* background-color: white;
+    color: var(--bg-primary); */
+    /*box-shadow: 0 2px 5px black;*/
+    height: 3rem;
+    width: 18rem;
+  }
+
+  .login-button:hover {
+  }
+
+</style>

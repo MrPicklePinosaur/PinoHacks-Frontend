@@ -5,6 +5,7 @@
     <router-view/>
     <footer>
       made with &lt;/&gt;
+      <font-awesome-icon :icon="['fab','github']" />
     </footer>
   </div>
 </template>
