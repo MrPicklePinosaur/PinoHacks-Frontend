@@ -6,6 +6,7 @@ export const getAllEvents = () => {
   const query = `
     {
       events {
+        id
         name
         event_type
         permission

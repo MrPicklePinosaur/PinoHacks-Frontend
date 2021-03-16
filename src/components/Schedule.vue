@@ -31,7 +31,6 @@
         :hideHeader="true"
         :events="events"
         @click:event="showEvent"
-        @change="populateEvents"
       ></v-calendar>
 
       <v-menu
@@ -47,7 +46,29 @@
           <v-card-text>
             <div>Starts {{ friendlyDate(new Date(selectedEvent.start_time)) }}</div>
             <p class="display-1 text--primary">{{ selectedEvent.name }}</p>
+            <div v-if="selectedEvent.speakers != null && selectedEvent.speakers.length > 0">
+              <div
+                v-for="(speaker, i) in selectedEvent.speakers"
+                :key="i"
+              >
+                <font-awesome-icon :icon="['fas', 'user']" />
+                {{ speaker.name }}
+              </div>
+            </div>
             <span v-html="selectedEvent.description"></span>
+            <v-spacer></v-spacer>
+            <div
+              v-if="selectedEvent.related_events != null"
+            >
+            <v-chip
+              v-for="(related, j) in getRelated(selectedEvent.related_events)"
+              :key="j"
+              small
+              @click="showEvent({ nativeEvent: selectedElement, event: related })"
+            >
+              {{ related.name }}
+            </v-chip>
+            </div>
           </v-card-text>
           <v-btn
             text
@@ -134,6 +155,17 @@ export default {
         })
     },
 
+    getRelated (relatedInd) {
+      var related = []
+      for (const ind of relatedInd) {
+        if (this.events == null) break
+        for (const evt of this.events) {
+          if (evt.data.id === ind) related.push(evt)
+        }
+      }
+      return related
+    },
+
     friendlyDate (date) {
       const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jly', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -149,6 +181,7 @@ export default {
   },
 
   mounted () {
+    this.populateEvents()
     this.$refs.calendar.checkChange()
   }
 
