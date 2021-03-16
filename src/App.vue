@@ -12,7 +12,6 @@
 
 <script>
 import Navbar from './components/Navbar'
-
 export default {
   name: 'App',
   components: {
@@ -24,21 +23,20 @@ export default {
 <style>
   html {
     --bg-light: #00AEED;
-
     font-family: Arial, Helvetica, sans-serif;
   }
-
   body {
     padding: 0;
     margin: 0;
     height: 100%;
   }
-
   footer {
     height: 4rem;
     position: absolute;
     bottom: 0;
     width: 100%;
   }
-
+  /* .v-application button {
+    all: unset !important;
+  } */
 </style>
