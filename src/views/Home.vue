@@ -8,34 +8,37 @@
         :src="`${publicPath}pinohacks_logo.png`"
         alt="PinoHacks"
       >
-      <p id="main-tagline">{{ $t('tagline') }}</p>
+      <p id="main-tagline">{{ $t('banner.tagline') }}</p>
 
       <router-link
         v-if="!(isLoggedIn)"
         to="/apply"
       >
-        <button id="apply-button">{{ $t('apply-button') }}</button>
+        <button id="apply-button">{{ $t('banner.apply-button') }}</button>
       </router-link>
     </div>
 
-    <h2>Event Schedule</h2>
+    <h2>{{ $t('headers.events') }}</h2>
     <div id="schedule-container">
       <schedule></schedule>
     </div>
-    <h2>FAQ</h2>
+    <h2>{{ $t('headers.faq') }}</h2>
+    <faq></faq>
 
-    <h2>Sponsers</h2>
+    <h2>{{ $t('headers.sponsers') }}</h2>
 
   </div>
 </template>
 
 <script>
 import Schedule from '../components/Schedule'
+import Faq from '../components/Faq'
 
 export default {
   name: 'Home',
   components: {
-    Schedule
+    Schedule,
+    Faq
   },
   data () {
     return {
@@ -50,12 +53,26 @@ export default {
 <i18n>
 {
   "en": {
-    "tagline": "the first hackathon that doesn't actually exist",
-    "apply-button": "Apply Now!"
+    "banner": {
+      "tagline": "the first hackathon that doesn't actually exist",
+      "apply-button": "Apply Now!"
+    },
+    "headers": {
+      "events": "Events",
+      "faq": "FAQ",
+      "sponsers": "Sponsers"
+    }
   },
   "ja": {
-    "tagline": "最初いらないのハッカソン",
-    "apply-button": "登録する！"
+    "banner": {
+      "tagline": "最初いらないのハッカソン",
+      "apply-button": "登録する！"
+    },
+    "headers": {
+      "events": "Events",
+      "faq": "エフイーキュー",
+      "sponsers": "主催達"
+    }
   }
 }
 </i18n>
@@ -64,8 +81,8 @@ export default {
 
   #main-banner {
     background-color: var(--bg-light);
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 7rem;
+    padding-bottom: 6rem;
 
     text-align: center;
   }
@@ -85,6 +102,11 @@ export default {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 6rem;
+  }
+
+  h2 {
+    margin-left: 10rem;
   }
 
 </style>

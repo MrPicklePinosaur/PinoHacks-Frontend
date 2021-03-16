@@ -21,7 +21,7 @@
           <v-icon small>mdi-chevron-right</v-icon>
         </v-btn>
         <v-toolbar-title>
-          Schedule {{ this.focus }}
+          {{ $t('schedule-title', { date: this.focus }) }}
         </v-toolbar-title>
       </v-toolbar>
       <v-calendar
@@ -45,7 +45,7 @@
           flat
         >
           <v-card-text>
-            <div>Starts {{ friendlyDate(new Date(selectedEvent.start_time)) }}</div>
+            <div>Starts {{ friendlyEvent(new Date(selectedEvent.start_time)) }}</div>
             <p class="display-1 text--primary">{{ selectedEvent.name }}</p>
             <span v-html="selectedEvent.description"></span>
           </v-card-text>
@@ -107,7 +107,7 @@ export default {
       nativeEvent.stopPropagation()
     },
 
-    populateEvents (data) {
+    populateEvents () {
       getAllEvents()
         .then(data => {
           console.log(data)
@@ -130,7 +130,15 @@ export default {
       const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jly', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-      return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`
+      return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}`
+    },
+
+    friendlyTime (date) {
+      return `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`
+    },
+
+    friendlyEvent (date) {
+      return `${this.friendlyDate(date)} ${this.friendlyTime(date)}`
     },
 
     redirectExternal (event) {
@@ -146,6 +154,17 @@ export default {
 
 }
 </script>
+
+<i18n>
+{
+  "en": {
+    "schedule-title": "Schedule for {date}"
+  },
+  "ja": {
+    "schedule-title": "{date} の 日程"
+  }
+}
+</i18n>
 
 <style>
 

@@ -3,10 +3,10 @@
   <v-app>
     <navbar/>
     <router-view/>
-    <!-- <footer>
+    <footer>
       made with &lt;/&gt;
       <font-awesome-icon :icon="['fab','github']" />
-    </footer> -->
+    </footer>
   </v-app>
 </template>
 
@@ -32,9 +32,9 @@ export default {
   }
   footer {
     height: 4rem;
-    position: absolute;
     bottom: 0;
     width: 100%;
+    text-align: center;
   }
   /* .v-application button {
     all: unset !important;

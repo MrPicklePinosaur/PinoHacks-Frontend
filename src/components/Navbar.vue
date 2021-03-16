@@ -36,4 +36,8 @@ export default {
 
 <style>
 
+  #navbar-main {
+    position: absolute;
+  }
+
 </style>
