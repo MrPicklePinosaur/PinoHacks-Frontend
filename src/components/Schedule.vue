@@ -77,7 +77,6 @@ export default {
     populateEvents (data) {
       getAllEvents()
         .then(data => {
-          console.log(data)
           const newEvents = data.data.events
             .filter(event => event.permission === 'public')
             .map(event => {

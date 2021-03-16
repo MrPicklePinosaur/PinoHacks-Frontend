@@ -10,7 +10,10 @@
       >
       <p id="main-tagline">the first hackathon that doesn't actually exist</p>
 
-      <router-link to="/apply">
+      <router-link
+        v-if="!(isLoggedIn)"
+        to="/apply"
+      >
         <button id="apply-button">Apply Now!</button>
       </router-link>
     </div>

@@ -28,6 +28,14 @@ library.add(
 )
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
+Vue.mixin({
+  computed: {
+    isLoggedIn () {
+      return this.$store.state.auth.loggedIn
+    }
+  }
+})
+
 new Vue({
   router,
   store,

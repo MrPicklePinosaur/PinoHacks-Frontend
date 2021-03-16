@@ -1,4 +1,4 @@
-import { login, logout } from '@/services/auth.service'
+import { checkCreds, clearCreds } from '@/services/auth.service'
 
 const localData = JSON.parse(localStorage.getItem('localData'))
 const initialState = (localData != null)
@@ -30,7 +30,7 @@ export const auth = {
 
   actions: {
     login ({ commit }, creds) {
-      return login(creds.username, creds.password)
+      return checkCreds(creds.username, creds.password)
         .then(
           data => {
             commit('loginSuccess', data)
@@ -45,7 +45,8 @@ export const auth = {
 
     logout ({ commit }) {
       commit('logout')
-      logout()
+      clearCreds()
+      console.log(this.state.auth.loggedIn)
     }
   },
 
