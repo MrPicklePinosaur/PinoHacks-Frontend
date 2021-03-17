@@ -1,5 +1,4 @@
-![PinoHacks](https://github.com/MrPicklePinosaur/PinoHacks-Frontend/blob/master/public/pinohacks_logo.png)
----
+PinoHacks - HTN Frontend Challenge
 
 ### ❓ Overview
 This project is a submission to the **Hack the North 2021 Frontend Challenge**.
