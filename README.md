@@ -1,4 +1,4 @@
-PinoHacks - HTN Frontend Challenge
+## PinoHacks - HTN Frontend Challenge
 
 ### ❓ Overview
 This project is a submission to the **Hack the North 2021 Frontend Challenge**.
@@ -15,6 +15,12 @@ git clone https://github.com/MrPicklePinosaur/PinoHacks-Frontend
 cd PinoHacks-Frontend
 npm install
 npm run serve
+```
+
+To test the login functionality, you can use the creds:
+```
+username: pinosaur
+password: pinohacks
 ```
 
 ### 📜 Writeup
