@@ -1,3 +1,4 @@
+
 <template>
   <div class="login-body container">
     <div class="login-container">
@@ -44,6 +45,7 @@ export default {
     onSubmit (evt) {
       evt.preventDefault()
 
+      /* make request to check creds */
       this.$store.dispatch('auth/login', { username: this.loginForm.username, password: this.loginForm.password })
         .then(
           data => {

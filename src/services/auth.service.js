@@ -1,8 +1,9 @@
 
+/* placeholder creds */
 const SUPER_SECRET_USERNAME = 'pinosaur'
 const SUPER_SECRET_PASSWORD = 'pinohacks'
 
-// this can be easily replaced with an actual request later
+/* placeholder login request - saves JWT to localStorage on success */
 export const checkCreds = (username, password) => {
   return new Promise((resolve, reject) => {
     if (username === SUPER_SECRET_USERNAME && password === SUPER_SECRET_PASSWORD) {
@@ -15,10 +16,9 @@ export const checkCreds = (username, password) => {
   })
 }
 
+/* clears localStore */
 export const clearCreds = () => {
   localStorage.removeItem('localData')
 }
 
-export const register = () => {
-
-}
+export const register = () => { }

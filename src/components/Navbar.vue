@@ -38,25 +38,6 @@ export default {
 }
 </script>
 
-// {
-//   "en": {
-//     "navbar": {
-//       "home": "Home",
-//       "login": "Login",
-//       "logout": "Logout",
-//       "apply": "Apply"
-//     }
-//   },
-//   "ja": {
-//     "navbar": {
-//       "home": "ホーム",
-//       "login": "ログイン",
-//       "logout": "ログアウト",
-//       "apply": "登録する"
-//     }
-//   }
-// }
-
 <style>
 
   #navbar-main {

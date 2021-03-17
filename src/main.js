@@ -16,19 +16,21 @@ import { faTools, faRunning, faLaptopCode, faRssSquare, faScroll, faMugHot, faUs
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-Vue.config.productionTip = false
-
+/* vue bootstrap init */
 Vue.use(BootStrapVue)
 
+/* vuetify init */
 Vue.use(Vuetify)
 const vuetify = new Vuetify({})
 
+/* font awesome init */
 library.add(
   faTools, faRunning, faLaptopCode, faRssSquare, faScroll, faMugHot, faUser,
   faGithub
 )
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
+/* define some global utilities */
 Vue.mixin({
   computed: {
     isLoggedIn () {
@@ -40,6 +42,8 @@ Vue.mixin({
   }
 })
 
+/* create main vue object */
+Vue.config.productionTip = false
 new Vue({
   router,
   store,

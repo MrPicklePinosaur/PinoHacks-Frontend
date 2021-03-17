@@ -6,7 +6,6 @@
     <footer>
       <hr>
       &lt;/&gt; {{ $t('madewith', { icon: "☕" }) }}
-      <!-- <font-awesome-icon :icon="['fas','mug-hot']" /> -->
     </footer>
   </v-app>
 </template>
@@ -48,7 +47,4 @@ export default {
     width: 100%;
     text-align: center;
   }
-  /* .v-application button {
-    all: unset !important;
-  } */
 </style>

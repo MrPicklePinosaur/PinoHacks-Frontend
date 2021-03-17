@@ -23,22 +23,4 @@ export const commonLocale = {
 }
 export const i18n = new VueI18n({
   locale: 'en'
-  // messages: {
-  //   en: {
-  //     navbar: {
-  //       home: 'Home',
-  //       login: 'Login',
-  //       logout: 'Logout',
-  //       apply: 'Apply'
-  //     }
-  //   },
-  //   ja: {
-  //     namebar: {
-  //       home: 'ホーム',
-  //       login: 'ログイン',
-  //       logout: 'ログアウト',
-  //       apply: '登録する'
-  //     }
-  //   }
-  // }
 })

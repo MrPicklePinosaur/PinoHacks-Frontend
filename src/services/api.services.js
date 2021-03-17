@@ -2,6 +2,7 @@
 import axios from 'axios'
 import { APIURL } from '@/config'
 
+/* query for all properties of user object */
 export const getAllEvents = () => {
   const query = `
     {

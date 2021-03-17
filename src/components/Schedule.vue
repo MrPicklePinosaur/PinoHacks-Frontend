@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <v-row><v-col><v-sheet height="400">
@@ -109,6 +110,7 @@ export default {
       this.$refs.calendar.next()
     },
 
+    /* show popup card */
     showEvent ({ nativeEvent, event }) {
       const open = () => {
         this.selectedEvent = event.data
@@ -128,7 +130,9 @@ export default {
       nativeEvent.stopPropagation()
     },
 
+    /* requests for all events and caches */
     populateEvents () {
+      /* this should be abstracted out in the future */
       const eventColors = {
         workshop: 'blue',
         activity: 'green',
@@ -136,9 +140,9 @@ export default {
         other: 'grey'
       }
 
+      /* grabs all events, filters out private (depending on state) and formats for calendar */
       getAllEvents()
         .then(data => {
-          console.log(data)
           const newEvents = data.data.events
             .filter(event => event.permission === 'public')
             .map(event => {
@@ -155,6 +159,8 @@ export default {
         })
     },
 
+    /* get list of related events */
+    /* by reading from current events, we can be sure that the related events have the correct permissions */
     getRelated (relatedInd) {
       var related = []
       for (const ind of relatedInd) {
@@ -166,6 +172,7 @@ export default {
       return related
     },
 
+    /* takes in date object and formats it to be user friendly */
     friendlyDate (date) {
       const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jly', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -173,6 +180,7 @@ export default {
       return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()} ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`
     },
 
+    /* push to an external url */
     redirectExternal (event) {
       const redirectUrl = (this.isLoggedIn) ? event.private_url : event.public_url
       window.location = redirectUrl
